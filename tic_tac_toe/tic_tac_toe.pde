@@ -73,5 +73,58 @@ void keyPressed(){
   }
 }
 
-      
-      
+void computerMove(){
+  ArrayList<Integer> availableMoves = new ArrayList<Integer>();
+  
+  for(int index=0; index<9; index++){
+    if(board[index] == 0){
+      availableMoves.add(index);
+    }
+  }
+  
+  if(availableMoves.size() > 0){
+    int move = availableMoves.get((int) random(availableMoves.size()));
+    board[move] = 1;
+    println("Computer Placed X at position" + move);
+  }
+  
+  if(checkWinner(1)){
+    print("Computer wins!");
+    gameOver = true;
+    return;
+  }
+  
+  if(isBoardfull()){
+    println("It's a draw!");
+    gameOver = true;
+    return;
+  }
+  
+  println("Game is still in play.");
+  playerTurn = true;
+}
+
+boolean checkWinner(int player){
+  int[][] winPatterns = {
+    {0,1,2},{3,4,5},{6,7,8},
+    {0,3,6},{1,4,7},{2,5,8},
+    {0,4,8},{2,4,6}
+  };
+  
+  for(int[][] pattern : winPatterns){
+    if(board[pattern[0]] == player && board[pattern[1]] ==player && board[pattern[2]] == player){
+      return true;
+    }
+  }
+  
+  return false;
+}
+
+boolean IsBoardFull(){
+  for(int index=0; index<9;index++){
+    if(board[index]==0){
+      return false;
+    }
+  }
+  return true;
+}
