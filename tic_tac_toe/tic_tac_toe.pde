@@ -21,6 +21,10 @@ void draw() {
   drawBoard();
   
   if(gameOver){
-    println("The Game has ended.Please reset to plat again.");
+    return;
   }
 }
+
+void keyPressed(){
+  if(gameOver){
+    println("The game has ended. Please reset to play again.");
