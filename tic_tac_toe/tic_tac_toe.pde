@@ -5,8 +5,8 @@ boolean playerTurn = false;
 void setup() {
   size(500, 500);
   
-  for(int index = 0; index < 9; index++){
-    board[index] = 0;
+  for(int index = 0; index < BOARD_SIZE; index++){
+    board[index] = EMPTY;
   }
 
   println("Press a number between 0 and 8 to place your O.");
@@ -39,8 +39,8 @@ void keyPressed(){
       return;
     }
     
-    if(board[cell] == 0){
-      board[cell] = 2;
+    if(board[cell] == EMPTY){
+      board[cell] = USER;
       println("You placed O at position " + " " + cell);
       
       if(checkWinner(2)){
@@ -68,7 +68,7 @@ void keyPressed(){
 void computerMove(){
   ArrayList<Integer> availableMoves = new ArrayList<Integer>();
   
-  for(int index=0; index<9; index++){
+  for(int index = 0; index < 9; index++){
     if(board[index] == 0){
       availableMoves.add(index);
     }
@@ -76,8 +76,8 @@ void computerMove(){
   
   if(availableMoves.size() > 0){
     int move = availableMoves.get((int) random(availableMoves.size()));
-    board[move] = 1;
-    println("Computer Placed X at position" + move);
+    board[move] = COMPUTER;
+    println("Computer Placed X at position" + " " + move);
   }
   
   if(checkWinner(1)){
@@ -113,8 +113,8 @@ boolean checkWinner(int player){
 }
 
 boolean isBoardFull(){
-  for(int index=0; index<9;index++){
-    if(board[index]==0){
+  for(int cell : board){
+    if(cell == EMPTY){
       return false;
     }
   }
