@@ -55,4 +55,23 @@ void keyPressed(){
         return;
       }
       
+      playerTurn = false;
+      computerMove();
+      
+      if(isBoardFull()){
+        println("It's a draw!");
+        gameOver = true;
+      } else{
+        println("Game is still in play.");
+        playerTurn=true;
+      }
+    }else{
+      println("This square is already taken. Please choose another.");
+    }
+  }else{
+    println("Invalid key pressed. Please press a number between 0 and 8.");
+  }
+}
+
+      
       
