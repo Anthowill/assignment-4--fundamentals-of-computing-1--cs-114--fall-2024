@@ -41,7 +41,7 @@ void keyPressed(){
     
     if(board[cell] == 0){
       board[cell] = 2;
-      println("You placed O at position " + cell);
+      println("You placed O at position " + " " + cell);
       
       if(checkWinner(2)){
         println("You win!");
@@ -57,14 +57,6 @@ void keyPressed(){
       
       playerTurn = false;
       computerMove();
-      
-      if(isBoardFull()){
-        println("It's a draw!");
-        gameOver = true;
-      } else{
-        println("Game is still in play.");
-        playerTurn=true;
-      }
     }else{
       println("This square is already taken. Please choose another.");
     }
