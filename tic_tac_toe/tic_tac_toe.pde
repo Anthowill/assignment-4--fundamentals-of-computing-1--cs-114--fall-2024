@@ -1,6 +1,6 @@
 int[] board = new int[9];
 boolean gameOver = false;
-boolean playeTurn = false;
+boolean playerTurn = false;
 
 void setup() {
   size(500, 500);
@@ -45,13 +45,13 @@ void keyPressed(){
       
       if(checkWinner(2)){
         println("You win!");
-        gameover = true;
+        gameOver = true;
         return;
       }
       
       if(isBoardFull()){
         println("It's a draw!");
-        gameover=true;
+        gameOver=true;
         return;
       }
       
@@ -94,7 +94,7 @@ void computerMove(){
     return;
   }
   
-  if(isBoardfull()){
+  if(isBoardFull()){
     println("It's a draw!");
     gameOver = true;
     return;
@@ -111,7 +111,7 @@ boolean checkWinner(int player){
     {0,4,8},{2,4,6}
   };
   
-  for(int[][] pattern : winPatterns){
+  for(int[] pattern : winPatterns){
     if(board[pattern[0]] == player && board[pattern[1]] ==player && board[pattern[2]] == player){
       return true;
     }
@@ -120,7 +120,7 @@ boolean checkWinner(int player){
   return false;
 }
 
-boolean IsBoardFull(){
+boolean isBoardFull(){
   for(int index=0; index<9;index++){
     if(board[index]==0){
       return false;
