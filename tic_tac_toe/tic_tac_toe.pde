@@ -79,19 +79,19 @@ void computerMove(){
     board[move] = COMPUTER;
     println("Computer Placed X at position" + " " + move);
   }
-  
+
   if(checkWinner(1)){
     print("Computer wins!");
     gameOver = true;
     return;
   }
-  
+
   if(isBoardFull()){
     println("It's a draw!");
     gameOver = true;
     return;
   }
-  
+
   println("Game is still in play.");
   playerTurn = true;
 }
@@ -102,13 +102,13 @@ boolean checkWinner(int player){
     {0,3,6},{1,4,7},{2,5,8},
     {0,4,8},{2,4,6}
   };
-  
+
   for(int[] pattern : winPatterns){
     if(board[pattern[0]] == player && board[pattern[1]] ==player && board[pattern[2]] == player){
       return true;
     }
   }
-  
+
   return false;
 }
 
